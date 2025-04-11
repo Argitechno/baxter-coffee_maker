@@ -24,7 +24,7 @@ def main():
     #pos1 = [0 for i in range(0,14)] 
     #Clear
     p.clear()
-    p.addBox(0.3678, 0.18118, 0.3386, 1.0341, -0.14421, 0.0504)
+    p.addBox('coffee_machine', 0.3678, 0.18118, 0.3386, 1.0341, -0.14421, 0.0504)
     #g.moveToJointPosition(joints_both, pos1, plan_only=False)
 
 
