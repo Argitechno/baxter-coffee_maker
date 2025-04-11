@@ -21,7 +21,7 @@ def main():
     pos1r = [ 0.08,  1.0, -1.19, 1.94, -0.67, 1.03,  0.5]
     pos1l = [-0.08, -1.0, -1.19, 1.94,  0.67, 1.03, -0.5]
     pos1 = pos1l + pos1r
-
+    pos1 = [0 for i in range(0,14)] 
     #Clear
     p.clear()
 
