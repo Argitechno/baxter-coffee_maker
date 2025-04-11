@@ -22,10 +22,10 @@
     <arg name="right_tip_name" default="right_gripper"/>
     <include file="$(find baxter_moveit_config)/launch/planning_context/launch">
         <arg name="load_robot_description" value="$(arg load_robot_description)"/>
-        <arg name="left_electric_gripper" value="$(left_electric_gripper)"/>
-        <arg name="right_electric_gripper" value="$(right_electric_gripper)"/>
-        <arg name="left_tip_name" value="$(left_tip_name)"/>
-        <arg name="right_tip_name" value="$(right_tip_name)"/>
+        <arg name="left_electric_gripper" value="$(arg left_electric_gripper)"/>
+        <arg name="right_electric_gripper" value="$(arg right_electric_gripper)"/>
+        <arg name="left_tip_name" value="$(arg left_tip_name)"/>
+        <arg name="right_tip_name" value="$(arg right_tip_name)"/>
     </include>
 
     <include file="$(find baxter_moveit_config)/launch/move_group.launch">
