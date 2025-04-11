@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import rospy
 import moveit_python
 import baxter_interface
