@@ -1,0 +1,37 @@
+<?xml version="1.0">
+<!--
+    moveit_init.launch: Initialize moveit_init
+    Note: Keep running this file in a seperate tab forever.
+    Requirements: No requirements needed
+    Author: Caleb Blondell, credit to Ravi Joshi for the base of this.
+    Date: 4/11/2025
+-->
+<launch>
+    <!-- By default we do not overwrite the UDRF. Change the following to true to change the default behavior -->
+    <arg name="load_robot_description" default="false"/>
+
+    <!-- 
+        Left and right gripper params. Set to true to check collisions for their links. 
+        Since we are using a pneumatic gripper on the left hand, we do not check for collision for the electric gripper. 
+    -->
+    <arg name="right_electric_gripper" default="true"/>
+    <arg name="left_electric_gripper" default="false"/>
+
+    <!-- Set the kinematic tips for the left_arm and right_arm move_groups -->
+    <arg name="left_tip_name" default="left_gripper"/>
+    <arg name="right_tip_name" default="right_gripper"/>
+    <include file="$(find baxter_moveit_config)/launch/planning_context/launch">
+        <arg name="load_robot_description" value="$(arg load_robot_description)"/>
+        <arg name="left_electric_gripper" value="$(left_electric_gripper)"/>
+        <arg name="right_electric_gripper" value="$(right_electric_gripper)"/>
+        <arg name="left_tip_name" value="$(left_tip_name)"/>
+        <arg name="right_tip_name" value="$(right_tip_name)"/>
+    </include>
+
+    <include file="$(find baxter_moveit_config)/launch/move_group.launch">
+        <arg name="allow_trajectory_execution" value="true"/>
+    </include>
+
+    <!-- Baxter provided utility-->
+    <node name= "joint_trajectory_action_server" pkg="baxter_interface" type="joint_trajectory_action_server.py" output="screen" />
+</launch>
