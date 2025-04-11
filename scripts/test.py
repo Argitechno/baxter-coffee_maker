@@ -25,8 +25,7 @@ def main():
     #Clear
     p.clear()
 
-    g.moveToJointPosition(joints_both, pos1, plan_only=True)
-    rospy.spin()
+    g.moveToJointPosition(joints_both, pos1, plan_only=False)
 
 
 if __name__ == '__main__':
