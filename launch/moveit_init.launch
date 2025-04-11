@@ -7,6 +7,9 @@
     Date: 4/11/2025
 -->
 <launch>
+    <arg name="config" default="true"/>
+    <arg name="rviz_config" default="$(find baxter_moveit_config)/launch/moveit.rviz"/>
+
     <!-- By default we do not overwrite the UDRF. Change the following to true to change the default behavior -->
     <arg name="load_robot_description" default="false"/>
 
@@ -20,7 +23,7 @@
     <!-- Set the kinematic tips for the left_arm and right_arm move_groups -->
     <arg name="left_tip_name" default="left_gripper"/>
     <arg name="right_tip_name" default="right_gripper"/>
-    <include file="$(find baxter_moveit_config)/launch/planning_context.launch">
+    <include file="$(find baxter_moveit_config)/launch/planning_contextlaunch">
         <arg name="load_robot_description" value="$(arg load_robot_description)"/>
         <arg name="left_electric_gripper" value="$(arg left_electric_gripper)"/>
         <arg name="right_electric_gripper" value="$(arg right_electric_gripper)"/>
@@ -30,6 +33,11 @@
 
     <include file="$(find baxter_moveit_config)/launch/move_group.launch">
         <arg name="allow_trajectory_execution" value="true"/>
+    </include>
+
+    <include file="$(find baxter_moveit_config)/launch/moveit_rviz.launch">
+        <arg name="config" value="$(arg config)"/>
+        <arg name="rviz_config" value="$(arg rviz_config)"/>
     </include>
 
     <!-- Baxter provided utility-->
