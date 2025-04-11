@@ -18,8 +18,8 @@ def main():
     joints_right = ['right_' + j for j in joints]
     joints_left = ['left_' + j for j in joints]
     joints_both = joints_left + joints_right
-    pos1r = [-1.19, 1.94, -0.08, -1.0,  0.67, 1.03, -0.5]
-    pos1l = [-1.19, 1.94,  0.08, -1.0, -0.67, 1.03,  0.5]
+    pos1r = [ 1.19, 1.94,  0.08, -1.0, -0.67, 1.03,  0.5]
+    pos1l = [-1.19, 1.94, -0.08, -1.0,  0.67, 1.03, -0.5]
     pos1 = pos1l + pos1r
     #pos1 = [0 for i in range(0,14)] 
     #Clear
