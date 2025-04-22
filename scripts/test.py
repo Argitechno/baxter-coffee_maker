@@ -3,35 +3,100 @@
 import rospy
 import moveit_python
 import baxter_interface
+from geometry_msgs.msg import *
+
+def get_keurig_position():
+    """Current: Return a set position.
+    Future: Use Machine Vision to find the position of the Keurig
+
+    Returns:
+        geometry_msgs/Point: The position of the Keurig.
+    """
+    point = Point()
+    point.x = 0
+    point.y = 0
+    point.z = 0
+    return point
+    
+def get_cup_position():
+    """"Current: Return a set position.
+    Future: Use Machine Vision to find the position of the cup.
+
+    Returns:
+        geometry_msgs/Point: The position of the cup.
+    """
+    point = Point()
+    point.x = 0
+    point.y = 0
+    point.z = 0
+    return point
+
+def get_kcup_position():
+    """Current: Return a set position.
+    Future: Use Machine Vision to find the position of the K-Cup.
+
+    Returns:
+        geometry_msgs/Point: The position of the K-Cup.
+    """
+    point = Point()
+    point.x = 0
+    point.y = 0
+    point.z = 0
+    return point
+
+def add_keurig(p):
+    """Add the keurig to the planning scene given it's location.
+
+    Args:
+        p PlanningSceneInterface: The planning scene to add the keurig to.+
+    """
+    point = get_keurig_position()
+
+def add_cup(p):
+    """Add the Cup to the planning scene given it's location.
+
+    Args:
+        p PlanningSceneInterface: The planning scene to add the Cup to.
+    """
+    point = get_cup_position()
+
+
+def add_kcup(p):
+    """Add the K-Cup to the planning scene given it's location.
+
+    Args:
+        p PlanningSceneInterface: The planning scene to add the K-Cup to.
+    """
+    kcup_position = get_kcup_position()
 
 def main():
-    """Should move the arms to untuck position."""
-    #Define initial parameters
-    p = moveit_python.PlanningSceneInterface("base")
-    g = moveit_python.MoveGroupInterface("both_arms", "base")
-    gr = moveit_python.MoveGroupInterface("right_arm", "base")
-    gl = moveit_python.MoveGroupInterface("left_arm", "base")
-    right_gripper = baxter_interface.Gripper('right')
-    right_gripper.calibrate()
-    right_gripper.open()
-    joints = ['e0', 'e1', 's0', 's1', 'w0', 'w1', 'w2']
-    joints_right = ['right_' + j for j in joints]
-    joints_left = ['left_' + j for j in joints]
-    joints_both = joints_left + joints_right
-    pos1r = [ 1.19, 1.94,  0.08, -1.0, -0.67, 1.03,  0.5]
-    pos1l = [-1.19, 1.94, -0.08, -1.0,  0.67, 1.03, -0.5]
-    pos1 = pos1l + pos1r
-    #pos1 = [0 for i in range(0,14)] 
-    #Clear
-    p.clear()
-    p.addBox('coffee_machine', 0.3678, 0.18118, 0.3386, 1.0341, -0.14421, 0.0504)
-    #g.moveToJointPosition(joints_both, pos1, plan_only=False)
+    """The idea here is to have baxter make some coffee."""
+
+    # General planning scene for moving around the space, will include keurig bounding box so we move around it.
+    general_p = PlanningSceneInterface("base", "general_p");
+
+    #Add each object to our general planning scene.
+    add_keurig(general_p)
+    add_cup(general_p)
+    add_kcup(general_p)
+
+    #Milestone 1. Great Job if we get this far!
+
+
+    # Move Group Interfaces for left arm, right arm, and both.
+    # left_g = MoveGroupInterface("left_arm", "base")
+    # right_g = MoveGroupInterface("left_arm", "base")
+    # both_g = MoveGroupInterface("left_arm", "base")
+
+
+
+    
 
 
 if __name__ == '__main__':
     try:
         print("Initializing Node...")
-        rospy.init_node("pre_coffee_testing")
+        rospy.init_node("coffee_maker")
         main()
 
     except rospy.ROSInterruptException:
