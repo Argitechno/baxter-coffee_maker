@@ -44,7 +44,7 @@ def add_kcup(p):
 def main():
     """The idea here is to have baxter make some coffee."""
     # General planning scene for moving around the space, will include keurig bounding box so we move around it.
-    general_p = PlanningSceneInterface("base", "general_p")
+    general_p = moveit_python.PlanningSceneInterface("base", "general_p")
 
     #Add each object to our general planning scene.
     #add_keurig(general_p)
