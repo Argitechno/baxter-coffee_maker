@@ -39,7 +39,6 @@ def add_kcup(p):
     kcup = SolidPrimitive(SolidPrimitive.CYLINDER, (0.0508, 0.0254))
     kcup_pose = Pose(Point(x=0.2,y=1,z=-0.1),Quaternion(x=0,y=0,z=0,w=1))  
     p.addSolidPrimitive("K-Cup", kcup, kcup_pose, frame_id = "base")
-    p.sendUpdate(kcup, None, True)
 
 def main():
     """The idea here is to have baxter make some coffee."""
