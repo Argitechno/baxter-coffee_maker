@@ -6,7 +6,7 @@ import baxter_interface
 from geometry_msgs.msg import Pose, Point, Quaternion
 from shape_msgs.msg import SolidPrimitive
 
-table_z = -0.1016
+table_z = -0.1778
 
 def add_keurig(p):
     """Add the keurig to the planning scene given it's location (center)
