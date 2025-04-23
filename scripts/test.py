@@ -36,7 +36,7 @@ def add_kcup(p):
     #~1.0 in rad * 2 in cylinder
    
     # Cylinder, height = 2 in, rad = 1 in -> to meters
-    kcup = SolidPrimitive(kcup.CYLINDER,(0.0508, 0.0254))
+    kcup = SolidPrimitive(SolidPrimitive.CYLINDER, (0.0508, 0.0254))
     kcup_pose = Pose((0.2, 1, -0.1), (0, 0, 0, 1))
     p.addSolidPrimitive("K-Cup", kcup, kcup_pose, frame_id = "base")
     p.sendUpdate(kcup, None, True)
