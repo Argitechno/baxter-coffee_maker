@@ -13,7 +13,9 @@ def add_keurig(p):
         p PlanningSceneInterface: The planning scene to add the keurig to.+
     """
     #~~~ 9 X 14 Y 16 Z
-    pass 
+    keurig = SolidPrimitive(SolidPrimitive.BOX, (0.3302, 0.2286, 0.4318))
+    keurig_pose = Pose(Point(1, 0, 0.0905),Quaternion(0, 0, 0, 1))  
+    p.addSolidPrimitive("Cup", keurig, keurig_pose, frame_id = "base")
     #point = get_keurig_position()
 
 def add_cup(p):
@@ -23,9 +25,9 @@ def add_cup(p):
         p PlanningSceneInterface: The planning scene to add the Cup to.
     """
     #~1.75 in rad * 4.5 cylinder
-    kcup = SolidPrimitive(SolidPrimitive.CYLINDER, (0.1016, 0.04064))
-    kcup_pose = Pose(Point(1, -0.3, -0.0508),Quaternion(0, 0, 0, 1))  
-    p.addSolidPrimitive("Cup", kcup, kcup_pose, frame_id = "base")
+    cup = SolidPrimitive(SolidPrimitive.CYLINDER, (0.1016, 0.04064))
+    cup_pose = Pose(Point(1, -0.3, -0.0508),Quaternion(0, 0, 0, 1))  
+    p.addSolidPrimitive("Cup", cup, cup_pose, frame_id = "base")
     #point = get_cup_position()
 
 
