@@ -3,7 +3,7 @@
 import rospy
 import moveit_python
 import baxter_interface 
-from geometry_msgs.msg import Pose
+from geometry_msgs.msg import Pose, Point, Quaternion
 from shape_msgs.msg import SolidPrimitive
 
 def add_keurig(p):
@@ -37,7 +37,7 @@ def add_kcup(p):
    
     # Cylinder, height = 2 in, rad = 1 in -> to meters
     kcup = SolidPrimitive(SolidPrimitive.CYLINDER, (0.0508, 0.0254))
-    kcup_pose = Pose({'x': 0.2, 'y': 1, 'z': -0.1}, {'x': 0, 'y': 0, 'z': 0, 'w': 1})  
+    kcup_pose = Pose(Point(x=0.2,y=1,z=-0.1),Quaternion(x=0,y=0,z=0,w=1))  
     p.addSolidPrimitive("K-Cup", kcup, kcup_pose, frame_id = "base")
     p.sendUpdate(kcup, None, True)
 
