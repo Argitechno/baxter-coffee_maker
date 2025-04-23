@@ -15,7 +15,7 @@ def add_keurig(p):
     #~~~ 9 X 14 Y 16 Z
     keurig = SolidPrimitive(SolidPrimitive.BOX, (0.3302, 0.2286, 0.4318))
     keurig_pose = Pose(Point(1, 0, 0.0905),Quaternion(0, 0, 0, 1))  
-    p.addSolidPrimitive("Cup", keurig, keurig_pose, frame_id = "base")
+    p.addSolidPrimitive("Keurig", keurig, keurig_pose, frame_id = "base")
     #point = get_keurig_position()
 
 def add_cup(p):
