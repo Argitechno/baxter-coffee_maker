@@ -26,7 +26,7 @@ def add_cup(p):
     """
     #~1.75 in rad * 4.5 cylinder
     cup = SolidPrimitive(SolidPrimitive.CYLINDER, (0.1016, 0.04064))
-    cup_pose = Pose(Point(1, -0.3, -0.0508),Quaternion(0, 0, 0, 1))  
+    cup_pose = Pose(Point(1, -0.3, -0.0746),Quaternion(0, 0, 0, 1))  
     p.addSolidPrimitive("Cup", cup, cup_pose, frame_id = "base")
     #point = get_cup_position()
 
