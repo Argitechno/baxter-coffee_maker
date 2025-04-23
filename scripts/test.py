@@ -51,7 +51,8 @@ def main():
     general_p = moveit_python.PlanningSceneInterface("base",) # "general_p"
 
     #Add each object to our general planning scene.
-    #add_keurig(general_p)
+    print("Adding Keurig...")
+    add_keurig(general_p)
     print("Adding Cup...")
     add_cup(general_p)
     print("Adding K-Cup...")
