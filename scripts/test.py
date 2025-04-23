@@ -6,6 +6,8 @@ import baxter_interface
 from geometry_msgs.msg import Pose, Point, Quaternion
 from shape_msgs.msg import SolidPrimitive
 
+table_z = 0.1016
+
 def add_keurig(p):
     """Add the keurig to the planning scene given it's location (center)
 
@@ -13,8 +15,9 @@ def add_keurig(p):
         p PlanningSceneInterface: The planning scene to add the keurig to.+
     """
     #~~~ 9 X 14 Y 16 Z
-    keurig = SolidPrimitive(SolidPrimitive.BOX, (0.3302, 0.2286, 0.4318))
-    keurig_pose = Pose(Point(1, 0, 0.0905),Quaternion(0, 0, 0, 1))  
+    height = 0.4318
+    keurig = SolidPrimitive(SolidPrimitive.BOX, (0.3302, 0.2286, height))
+    keurig_pose = Pose(Point(1, 0, table_z - height/2.0),Quaternion(0, 0, 0, 1))  
     p.addSolidPrimitive("Keurig", keurig, keurig_pose, frame_id = "base")
     #point = get_keurig_position()
 
@@ -25,8 +28,9 @@ def add_cup(p):
         p PlanningSceneInterface: The planning scene to add the Cup to.
     """
     #~1.75 in rad * 4.5 cylinder
-    cup = SolidPrimitive(SolidPrimitive.CYLINDER, (0.1016, 0.04064))
-    cup_pose = Pose(Point(1, -0.3, -0.0746),Quaternion(0, 0, 0, 1))  
+    height = 0.1016
+    cup = SolidPrimitive(SolidPrimitive.CYLINDER, (height, 0.04064))
+    cup_pose = Pose(Point(1, -0.3, table_z - height/2.0),Quaternion(0, 0, 0, 1))  
     p.addSolidPrimitive("Cup", cup, cup_pose, frame_id = "base")
     #point = get_cup_position()
 
@@ -40,8 +44,9 @@ def add_kcup(p):
     #~1.0 in rad * 2 in cylinder
    
     # Cylinder, height = 2 in, rad = 1 in -> to meters
-    kcup = SolidPrimitive(SolidPrimitive.CYLINDER, (0.0508, 0.0254))
-    kcup_pose = Pose(Point(1, 0.3, -0.1),Quaternion(0, 0, 0, 1))  
+    height = 0.0508
+    kcup = SolidPrimitive(SolidPrimitive.CYLINDER, (height, 0.0254))
+    kcup_pose = Pose(Point(1, 0.3, table_z - height/2),Quaternion(0, 0, 0, 1))  
     p.addSolidPrimitive("K-Cup", kcup, kcup_pose, frame_id = "base")
 
 def main():
