@@ -53,10 +53,10 @@ def main():
     #Add each object to our general planning scene.
     print("Adding Keurig...")
     add_keurig(general_p)
-    print("Adding Cup...")
-    add_cup(general_p)
-    print("Adding K-Cup...")
-    add_kcup(general_p)
+    #print("Adding Cup...")
+    #add_cup(general_p)
+    #print("Adding K-Cup...")
+    #add_kcup(general_p)
     print("Done!")
 
     #Milestone 1. Great Job if we get this far!
