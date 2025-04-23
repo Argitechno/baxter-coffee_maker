@@ -49,14 +49,14 @@ def main():
     # General planning scene for moving around the space, will include keurig bounding box so we move around it.
     print("Initializing Planning Scene...")
     general_p = moveit_python.PlanningSceneInterface("base",) # "general_p"
-
+    general_p.clear()
     #Add each object to our general planning scene.
     print("Adding Keurig...")
     add_keurig(general_p)
-    #print("Adding Cup...")
-    #add_cup(general_p)
-    #print("Adding K-Cup...")
-    #add_kcup(general_p)
+    print("Adding Cup...")
+    add_cup(general_p)
+    print("Adding K-Cup...")
+    add_kcup(general_p)
     print("Done!")
 
     #Milestone 1. Great Job if we get this far!
