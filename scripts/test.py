@@ -23,7 +23,9 @@ def add_cup(p):
         p PlanningSceneInterface: The planning scene to add the Cup to.
     """
     #~1.75 in rad * 4.5 cylinder
-    pass
+    kcup = SolidPrimitive(SolidPrimitive.CYLINDER, (0.1016, 0.04064))
+    kcup_pose = Pose(Point(1, -0.3, -0.0508),Quaternion(0, 0, 0, 1))  
+    p.addSolidPrimitive("Cup", kcup, kcup_pose, frame_id = "base")
     #point = get_cup_position()
 
 
@@ -48,7 +50,8 @@ def main():
 
     #Add each object to our general planning scene.
     #add_keurig(general_p)
-    #add_cup(general_p)
+    print("Adding Cup...")
+    add_cup(general_p)
     print("Adding K-Cup...")
     add_kcup(general_p)
     print("Done!")
